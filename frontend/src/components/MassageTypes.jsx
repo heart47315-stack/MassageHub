@@ -1,18 +1,49 @@
-import React from "react";
+import './MassageTypes.css'
 
 const types = [
-  "Swedish Massage", "Thai Massage", "Deep Tissue", "Sports Massage",
-  "Reflexology", "Shiatsu", "Hot Stone", "Aromatherapy"
-];
+  {
+    title:'Thai Massage',
+    image:'https://images.unsplash.com/photo-1519823551278-64ac92734fb1?q=80&w=1974'
+  },
+  {
+    title:'Oil Massage',
+    image:'https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=1974'
+  },
+  {
+    title:'Aromatherapy',
+    image:'https://images.unsplash.com/photo-1507652313519-d4e9174996dd?q=80&w=1974'
+  }
+]
 
 export default function MassageTypes() {
   return (
-    <section className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-2 md:grid-cols-4 gap-6">
-      {types.map((t, i) => (
-        <div key={i} className="bg-gray-100 p-6 rounded-lg text-center hover:bg-gray-200">
-          <h4 className="font-semibold text-gray-800">{t}</h4>
-        </div>
-      ))}
+    <section className="section container">
+
+      <div className="section-title">
+        <span>Categories</span>
+        <h2>Massage Services</h2>
+      </div>
+
+      <div className="types-grid">
+
+        {types.map((item,index)=>(
+
+          <div className="card type-card" key={index}>
+
+            <img src={item.image} alt="" />
+
+            <div className="type-content">
+
+              <h3>{item.title}</h3>
+
+            </div>
+
+          </div>
+
+        ))}
+
+      </div>
+
     </section>
-  );
+  )
 }

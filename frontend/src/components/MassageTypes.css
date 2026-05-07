@@ -1,0 +1,27 @@
+.types-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:30px;
+}
+
+.type-card img{
+  height:350px;
+  object-fit:cover;
+}
+
+.type-content{
+  padding:24px;
+  text-align:center;
+}
+
+.type-content h3{
+  font-size:34px;
+}
+
+@media(max-width:768px){
+
+.types-grid{
+  grid-template-columns:1fr;
+}
+
+}

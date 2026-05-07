@@ -1,0 +1,33 @@
+.therapist-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:30px;
+}
+
+.therapist-card img{
+  height:420px;
+  object-fit:cover;
+}
+
+.therapist-content{
+  padding:24px;
+}
+
+.therapist-content h3{
+  font-size:36px;
+  color:var(--brown);
+  margin-bottom:10px;
+}
+
+.therapist-content p{
+  color:var(--muted);
+  margin-bottom:20px;
+}
+
+@media(max-width:768px){
+
+.therapist-grid{
+  grid-template-columns:1fr;
+}
+
+}

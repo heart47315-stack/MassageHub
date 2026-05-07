@@ -1,0 +1,54 @@
+.navbar{
+
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:1000;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  padding:20px 8%;
+
+  background:
+  rgba(255,249,243,0.85);
+
+  backdrop-filter:blur(12px);
+
+  border-bottom:
+  1px solid rgba(199,154,95,0.15);
+}
+
+.logo{
+  font-size:42px;
+  color:var(--brown);
+  font-family:'Cormorant Garamond',serif;
+  font-weight:700;
+}
+
+.nav-links{
+  display:flex;
+  gap:40px;
+}
+
+.nav-links a{
+  color:var(--brown);
+  font-weight:500;
+}
+
+@media(max-width:768px){
+
+.nav-links{
+  display:none;
+}
+
+.navbar{
+  padding:20px;
+}
+
+.logo{
+  font-size:32px;
+}
+
+}

@@ -1,19 +1,40 @@
-import React from "react";
+import './HeroSection.css'
 
 export default function HeroSection() {
   return (
-    <section className="bg-gray-100 h-[70vh] flex flex-col items-center justify-center text-center px-6">
-      <h2 className="text-4xl md:text-6xl font-bold text-gray-800 mb-4">
-        Find Professional Massage Therapists Across the UK
-      </h2>
-      <p className="text-lg text-gray-600 mb-6">
-        Trusted by 350K+ Happy Clients
-      </p>
-      <div className="flex space-x-4">
-        <input type="text" placeholder="Enter Location" className="px-4 py-2 border rounded-md" />
-        <input type="text" placeholder="Massage Type" className="px-4 py-2 border rounded-md" />
-        <button className="bg-black text-white px-6 py-2 rounded-md hover:bg-gray-800">Search</button>
+    <section className="hero">
+
+      <div className="hero-content">
+
+        <p className="hero-subtitle">
+          Relax • Unwind • Discover
+        </p>
+
+        <h1>
+          Find Your Perfect
+          Massage Experience
+        </h1>
+
+        <p>
+          Discover trusted massage therapists
+          and wellness services near you.
+        </p>
+
+        <div className="search-box">
+
+          <input
+            type="text"
+            placeholder="Search massage services..."
+          />
+
+          <button className="btn">
+            Search
+          </button>
+
+        </div>
+
       </div>
+
     </section>
-  );
+  )
 }

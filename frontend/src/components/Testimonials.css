@@ -1,0 +1,33 @@
+.testimonials{
+  background:var(--bg2);
+}
+
+.testimonial-card{
+
+  max-width:900px;
+
+  margin:auto;
+
+  background:white;
+
+  padding:60px;
+
+  border-radius:30px;
+
+  text-align:center;
+
+  box-shadow:var(--shadow);
+}
+
+.testimonial-card p{
+
+  font-size:26px;
+
+  line-height:1.8;
+
+  margin-bottom:20px;
+}
+
+.testimonial-card h4{
+  color:var(--gold);
+}
