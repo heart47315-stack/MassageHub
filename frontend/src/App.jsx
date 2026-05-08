@@ -1,29 +1,167 @@
-import Navbar from './components/Navbar'
-import HeroSection from './pages/HeroSection'
-import MassageTypes from './components/MassageTypes'
-import Explore from './pages/Explore'
-import Testimonials from './components/Testimonials'
-import BlogSection from './components/BlogSection'
-import Footer from './components/Footer'
+import { Routes, Route, Link } from "react-router-dom";
 
-function App() {
+function Navbar() {
   return (
-    <>
-      <Navbar />
+    <nav className="bg-[#3e2723] text-white px-8 py-5 flex justify-between items-center shadow-lg">
+      <h1 className="text-2xl font-bold tracking-wide">
+        MassageHub
+      </h1>
 
-      <HeroSection />
+      <div className="flex gap-6 text-sm md:text-base">
+        <Link to="/" className="hover:text-[#d7ccc8] transition">
+          Home
+        </Link>
 
-      <MassageTypes />
+        <Link to="/explore" className="hover:text-[#d7ccc8] transition">
+          Explore
+        </Link>
 
-      <Explore />
+        <Link to="/therapists" className="hover:text-[#d7ccc8] transition">
+          Therapists
+        </Link>
 
-      <Testimonials />
+        <Link to="/blog" className="hover:text-[#d7ccc8] transition">
+          Blog
+        </Link>
 
-      <BlogSection />
-
-      <Footer />
-    </>
-  )
+        <Link to="/contact" className="hover:text-[#d7ccc8] transition">
+          Contact
+        </Link>
+      </div>
+    </nav>
+  );
 }
 
-export default App
+function Hero() {
+  return (
+    <section className="min-h-[85vh] bg-[#efebe9] flex flex-col justify-center items-center text-center px-6">
+      <h1 className="text-5xl md:text-7xl font-bold text-[#3e2723] mb-6">
+        Relax Your Body
+      </h1>
+
+      <p className="max-w-2xl text-[#5d4037] text-lg md:text-xl leading-relaxed mb-8">
+        Professional massage therapists ready to help you relax,
+        recover, and feel your best anytime.
+      </p>
+
+      <div className="flex gap-4">
+        <Link
+          to="/explore"
+          className="bg-[#5d4037] text-white px-8 py-4 rounded-full hover:bg-[#4e342e] transition text-lg shadow-lg"
+        >
+          Explore Services
+        </Link>
+
+        <Link
+          to="/contact"
+          className="border-2 border-[#5d4037] text-[#5d4037] px-8 py-4 rounded-full hover:bg-[#5d4037] hover:text-white transition text-lg"
+        >
+          Contact Us
+        </Link>
+      </div>
+    </section>
+  );
+}
+
+function Home() {
+  return (
+    <>
+      <Hero />
+
+      <section className="py-20 px-8 bg-white">
+        <h2 className="text-4xl font-bold text-center text-[#3e2723] mb-12">
+          Why Choose Us
+        </h2>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          <div className="bg-[#efebe9] p-8 rounded-3xl shadow-md">
+            <h3 className="text-2xl font-semibold mb-4 text-[#3e2723]">
+              Professional Therapists
+            </h3>
+
+            <p className="text-[#5d4037]">
+              Highly trained massage specialists with years of
+              experience.
+            </p>
+          </div>
+
+          <div className="bg-[#efebe9] p-8 rounded-3xl shadow-md">
+            <h3 className="text-2xl font-semibold mb-4 text-[#3e2723]">
+              Relaxing Experience
+            </h3>
+
+            <p className="text-[#5d4037]">
+              Comfortable environment designed to help you fully relax.
+            </p>
+          </div>
+
+          <div className="bg-[#efebe9] p-8 rounded-3xl shadow-md">
+            <h3 className="text-2xl font-semibold mb-4 text-[#3e2723]">
+              Easy Booking
+            </h3>
+
+            <p className="text-[#5d4037]">
+              Book appointments quickly with our online system.
+            </p>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+function Explore() {
+  return (
+    <div className="min-h-screen bg-[#efebe9] flex items-center justify-center">
+      <h1 className="text-5xl font-bold text-[#3e2723]">
+        Explore Services
+      </h1>
+    </div>
+  );
+}
+
+function Therapists() {
+  return (
+    <div className="min-h-screen bg-white flex items-center justify-center">
+      <h1 className="text-5xl font-bold text-[#3e2723]">
+        Our Therapists
+      </h1>
+    </div>
+  );
+}
+
+function Blog() {
+  return (
+    <div className="min-h-screen bg-[#efebe9] flex items-center justify-center">
+      <h1 className="text-5xl font-bold text-[#3e2723]">
+        Blog & Wellness
+      </h1>
+    </div>
+  );
+}
+
+function Contact() {
+  return (
+    <div className="min-h-screen bg-white flex items-center justify-center">
+      <h1 className="text-5xl font-bold text-[#3e2723]">
+        Contact Us
+      </h1>
+    </div>
+  );
+}
+
+export default function App() {
+  return (
+    <div className="font-sans">
+      <Navbar />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/explore" element={<Explore />} />
+        <Route path="/therapists" element={<Therapists />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </div>
+  );
+}
