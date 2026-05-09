@@ -1,50 +1,168 @@
 import { Routes, Route, Link } from "react-router-dom";
+import { useState } from "react";
 
 /* ================= NAVBAR ================= */
 function Navbar() {
-  return (
-    <nav className="bg-[#3e2723] text-white px-8 py-5 flex justify-between items-center shadow-lg">
-      <h1 className="text-2xl font-bold tracking-wide">MassageHub</h1>
+  const [menuOpen, setMenuOpen] = useState(false);
 
-      <div className="flex gap-6 text-sm md:text-base">
-        <Link to="/" className="hover:text-[#d7ccc8] transition">Home</Link>
-        <Link to="/explore" className="hover:text-[#d7ccc8] transition">Explore</Link>
-        <Link to="/therapists" className="hover:text-[#d7ccc8] transition">Therapists</Link>
-        <Link to="/blog" className="hover:text-[#d7ccc8] transition">Blog</Link>
-        <Link to="/contact" className="hover:text-[#d7ccc8] transition">Contact</Link>
+  return (
+    <header className="fixed top-0 left-0 w-full z-50 bg-black/20 backdrop-blur-xl border-b border-white/10">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 py-5 flex justify-between items-center">
+        
+        {/* LOGO */}
+        <Link
+          to="/"
+          className="text-3xl md:text-4xl font-bold text-white tracking-wide"
+          style={{ fontFamily: "Cormorant Garamond" }}
+        >
+          MassageHub
+        </Link>
+
+        {/* DESKTOP MENU */}
+        <nav className="hidden md:flex gap-10 text-white uppercase tracking-[2px] text-sm">
+          <Link to="/" className="hover:text-[#d6a86a] transition">
+            Home
+          </Link>
+
+          <Link to="/explore" className="hover:text-[#d6a86a] transition">
+            Explore
+          </Link>
+
+          <Link to="/therapists" className="hover:text-[#d6a86a] transition">
+            Therapists
+          </Link>
+
+          <Link to="/blog" className="hover:text-[#d6a86a] transition">
+            Blog
+          </Link>
+
+          <Link to="/contact" className="hover:text-[#d6a86a] transition">
+            Contact
+          </Link>
+        </nav>
+
+        {/* BUTTON */}
+        <button className="hidden md:block bg-gradient-to-r from-[#d6a86a] to-[#8a5a3b] px-6 py-3 rounded-full text-white font-medium hover:scale-105 transition duration-300">
+          Book Now
+        </button>
+
+        {/* MOBILE BUTTON */}
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="md:hidden text-white text-3xl"
+        >
+          ☰
+        </button>
       </div>
-    </nav>
+
+      {/* MOBILE MENU */}
+      {menuOpen && (
+        <div className="md:hidden bg-[#2d1b15]/95 backdrop-blur-xl border-t border-white/10">
+          <nav className="flex flex-col p-6 gap-5 text-white uppercase tracking-[2px] text-sm">
+            <Link to="/" onClick={() => setMenuOpen(false)}>
+              Home
+            </Link>
+
+            <Link to="/explore" onClick={() => setMenuOpen(false)}>
+              Explore
+            </Link>
+
+            <Link to="/therapists" onClick={() => setMenuOpen(false)}>
+              Therapists
+            </Link>
+
+            <Link to="/blog" onClick={() => setMenuOpen(false)}>
+              Blog
+            </Link>
+
+            <Link to="/contact" onClick={() => setMenuOpen(false)}>
+              Contact
+            </Link>
+
+            <button className="bg-gradient-to-r from-[#d6a86a] to-[#8a5a3b] py-3 rounded-full mt-4">
+              Book Now
+            </button>
+          </nav>
+        </div>
+      )}
+    </header>
   );
 }
 
 /* ================= HERO ================= */
 function Hero() {
   return (
-    <section className="min-h-[85vh] bg-[#efebe9] flex flex-col justify-center items-center text-center px-6">
-      <h1 className="text-5xl md:text-7xl font-bold text-[#3e2723] mb-6">
-        Relax Your Body
-      </h1>
+    <section
+      className="relative min-h-screen flex items-center justify-center text-center overflow-hidden"
+      style={{
+        backgroundImage:
+          "url('https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=1800&auto=format&fit=crop')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      {/* OVERLAY */}
+      <div className="absolute inset-0 bg-black/55"></div>
 
-      <p className="max-w-2xl text-[#5d4037] text-lg md:text-xl mb-8">
-        Professional massage therapists ready to help you relax, recover, and feel your best.
-      </p>
+      {/* CONTENT */}
+      <div className="relative z-10 px-6 max-w-5xl pt-32">
+        <span className="uppercase tracking-[6px] text-[#d6a86a] text-xs md:text-sm">
+          Luxury Massage Experience
+        </span>
 
-      <div className="flex gap-4">
-        <Link
-          to="/explore"
-          className="bg-[#5d4037] text-white px-8 py-4 rounded-full hover:bg-[#4e342e] transition"
+        <h1
+          className="text-5xl sm:text-6xl md:text-8xl text-white font-bold leading-tight mt-6"
+          style={{ fontFamily: "Cormorant Garamond" }}
         >
-          Explore Services
-        </Link>
+          Relax Your <br /> Body & Mind
+        </h1>
 
-        <Link
-          to="/contact"
-          className="border-2 border-[#5d4037] text-[#5d4037] px-8 py-4 rounded-full hover:bg-[#5d4037] hover:text-white transition"
-        >
-          Contact Us
-        </Link>
+        <p className="text-white/80 text-base md:text-xl leading-8 max-w-2xl mx-auto mt-8">
+          Experience premium massage therapy with professional therapists,
+          elegant ambience, and unforgettable wellness treatments.
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-5 justify-center mt-10">
+          <Link
+            to="/explore"
+            className="bg-gradient-to-r from-[#d6a86a] to-[#8a5a3b] px-10 py-5 rounded-full text-white font-semibold hover:scale-105 transition duration-300"
+          >
+            Explore Services
+          </Link>
+
+          <Link
+            to="/contact"
+            className="border border-white/40 backdrop-blur-md px-10 py-5 rounded-full text-white hover:bg-white hover:text-black transition duration-300"
+          >
+            Contact Us
+          </Link>
+        </div>
       </div>
     </section>
+  );
+}
+
+/* ================= CARD ================= */
+function ServiceCard({ image, title, desc }) {
+  return (
+    <div className="bg-white rounded-[35px] overflow-hidden shadow-xl hover:-translate-y-3 transition duration-500">
+      <img
+        src={image}
+        alt={title}
+        className="h-[300px] w-full object-cover"
+      />
+
+      <div className="p-8">
+        <h3
+          className="text-3xl font-bold text-[#3e2723] mb-4"
+          style={{ fontFamily: "Cormorant Garamond" }}
+        >
+          {title}
+        </h3>
+
+        <p className="text-[#6d4c41] leading-8">{desc}</p>
+      </div>
+    </div>
   );
 }
 
@@ -54,25 +172,42 @@ function Home() {
     <>
       <Hero />
 
-      <section className="py-20 px-8 bg-white">
-        <h2 className="text-4xl font-bold text-center text-[#3e2723] mb-12">
-          Why Choose Us
-        </h2>
+      <section className="py-24 md:py-32 bg-[#f7efe7] px-6">
+        <div className="max-w-7xl mx-auto">
+          
+          {/* TITLE */}
+          <div className="text-center mb-20">
+            <span className="uppercase tracking-[5px] text-[#b18454] text-sm">
+              Why Choose Us
+            </span>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="bg-[#efebe9] p-8 rounded-3xl shadow-md">
-            <h3 className="text-2xl font-semibold mb-4">Professional Therapists</h3>
-            <p>Highly trained massage specialists with years of experience.</p>
+            <h2
+              className="text-5xl md:text-6xl text-[#3e2723] mt-5 font-bold"
+              style={{ fontFamily: "Cormorant Garamond" }}
+            >
+              Wellness & Luxury
+            </h2>
           </div>
 
-          <div className="bg-[#efebe9] p-8 rounded-3xl shadow-md">
-            <h3 className="text-2xl font-semibold mb-4">Relaxing Experience</h3>
-            <p>Comfortable environment designed for full relaxation.</p>
-          </div>
+          {/* GRID */}
+          <div className="grid md:grid-cols-3 gap-10">
+            <ServiceCard
+              image="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=1200&auto=format&fit=crop"
+              title="Professional Therapists"
+              desc="Skilled massage experts delivering premium wellness experiences."
+            />
 
-          <div className="bg-[#efebe9] p-8 rounded-3xl shadow-md">
-            <h3 className="text-2xl font-semibold mb-4">Easy Booking</h3>
-            <p>Book appointments quickly with our online system.</p>
+            <ServiceCard
+              image="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?q=80&w=1200&auto=format&fit=crop"
+              title="Relaxing Experience"
+              desc="Elegant atmosphere designed to calm your body and mind."
+            />
+
+            <ServiceCard
+              image="https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=1200&auto=format&fit=crop"
+              title="Easy Booking"
+              desc="Book appointments quickly through our online system."
+            />
           </div>
         </div>
       </section>
@@ -83,7 +218,7 @@ function Home() {
 /* ================= PAGES ================= */
 function Explore() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#efebe9] text-4xl font-bold">
+    <div className="min-h-screen flex items-center justify-center bg-[#f7efe7] text-[#3e2723] text-5xl font-bold">
       Explore Services
     </div>
   );
@@ -91,7 +226,7 @@ function Explore() {
 
 function Therapists() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white text-4xl font-bold">
+    <div className="min-h-screen flex items-center justify-center bg-white text-[#3e2723] text-5xl font-bold">
       Our Therapists
     </div>
   );
@@ -99,7 +234,7 @@ function Therapists() {
 
 function Blog() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#efebe9] text-4xl font-bold">
+    <div className="min-h-screen flex items-center justify-center bg-[#f7efe7] text-[#3e2723] text-5xl font-bold">
       Blog & Wellness
     </div>
   );
@@ -107,7 +242,7 @@ function Blog() {
 
 function Contact() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white text-4xl font-bold">
+    <div className="min-h-screen flex items-center justify-center bg-white text-[#3e2723] text-5xl font-bold">
       Contact Us
     </div>
   );
@@ -116,7 +251,7 @@ function Contact() {
 /* ================= APP ================= */
 export default function App() {
   return (
-    <div className="font-sans">
+    <div className="overflow-x-hidden">
       <Navbar />
 
       <Routes>
