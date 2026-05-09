@@ -1,54 +1,145 @@
-.navbar{
+/* ================= NAVBAR ================= */
 
-  position:fixed;
-  top:0;
-  width:100%;
-  z-index:1000;
-
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-
-  padding:20px 8%;
-
-  background:
-  rgba(255,249,243,0.85);
-
-  backdrop-filter:blur(12px);
-
-  border-bottom:
-  1px solid rgba(199,154,95,0.15);
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  backdrop-filter: blur(18px);
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.logo{
-  font-size:42px;
-  color:var(--brown);
-  font-family:'Cormorant Garamond',serif;
-  font-weight:700;
+.navbar-container {
+  max-width: 1280px;
+  margin: auto;
+  padding: 20px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.nav-links{
-  display:flex;
-  gap:40px;
+/* ================= LOGO ================= */
+
+.navbar-logo {
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+  letter-spacing: 1px;
+  font-family: "Cormorant Garamond", serif;
 }
 
-.nav-links a{
-  color:var(--brown);
-  font-weight:500;
+/* ================= DESKTOP MENU ================= */
+
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  gap: 40px;
 }
 
-@media(max-width:768px){
-
-.nav-links{
-  display:none;
+.navbar-link {
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  transition: 0.3s;
 }
 
-.navbar{
-  padding:20px;
+.navbar-link:hover {
+  color: #d6a86a;
 }
 
-.logo{
-  font-size:32px;
+/* ================= BUTTON ================= */
+
+.navbar-button {
+  background: linear-gradient(to right, #d6a86a, #8a5a3b);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
+.navbar-button:hover {
+  transform: scale(1.05);
+}
+
+/* ================= MOBILE BUTTON ================= */
+
+.mobile-menu-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+/* ================= MOBILE MENU ================= */
+
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  gap: 20px;
+  padding: 24px;
+  background: rgba(45, 27, 21, 0.95);
+  backdrop-filter: blur(20px);
+}
+
+.mobile-link {
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: 0.3s;
+}
+
+.mobile-link:hover {
+  color: #d6a86a;
+}
+
+.mobile-button {
+  margin-top: 10px;
+  background: linear-gradient(to right, #d6a86a, #8a5a3b);
+  border: none;
+  color: white;
+  padding: 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+
+  .navbar-menu {
+    display: none;
+  }
+
+  .navbar-button {
+    display: none;
+  }
+
+  .mobile-menu-btn {
+    display: block;
+  }
+
+  .mobile-menu.active {
+    display: flex;
+  }
+
+  .navbar-container {
+    padding: 18px 24px;
+  }
+
+  .navbar-logo {
+    font-size: 2rem;
+  }
 }
