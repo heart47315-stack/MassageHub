@@ -1,8 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 /* ================= ROOT ================= */
 :root {
@@ -15,7 +12,7 @@
   --text: #2f1d13;
   --muted: #8d7766;
   --white: #ffffff;
-  --shadow: 0 10px 30px rgba(0,0,0,0.06);
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
 }
 
 /* ================= RESET ================= */
@@ -29,11 +26,12 @@ html {
   scroll-behavior: smooth;
 }
 
-/* ================= BODY (FIXED) ================= */
+/* ================= BODY ================= */
 body {
   background: var(--bg);
   color: var(--text);
   font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
 }
 
 /* ================= GLOBAL ================= */
@@ -47,20 +45,25 @@ img {
   display: block;
 }
 
-/* ================= UTILITY ================= */
+/* ================= CONTAINER ================= */
 .container {
   width: 90%;
   max-width: 1400px;
   margin: auto;
 }
 
+/* ================= SECTION ================= */
 .section {
   padding: 100px 0;
 }
 
-/* ================= TYPO ================= */
-h1, h2, h3, h4 {
+/* ================= TYPOGRAPHY ================= */
+h1,
+h2,
+h3,
+h4 {
   font-family: 'Cormorant Garamond', serif;
+  line-height: 1.1;
 }
 
 /* ================= BUTTON ================= */
@@ -72,11 +75,14 @@ h1, h2, h3, h4 {
   border-radius: 999px;
   cursor: pointer;
   font-weight: 600;
-  transition: 0.3s;
+  transition: all 0.3s ease;
+  display: inline-block;
+  box-shadow: 0 10px 25px rgba(199, 154, 95, 0.25);
 }
 
 .btn:hover {
   transform: translateY(-4px);
+  opacity: 0.95;
 }
 
 /* ================= SECTION TITLE ================= */
@@ -90,11 +96,13 @@ h1, h2, h3, h4 {
   letter-spacing: 3px;
   text-transform: uppercase;
   font-size: 14px;
+  font-weight: 500;
 }
 
 .section-title h2 {
   font-size: 60px;
   margin-top: 10px;
+  color: var(--brown);
 }
 
 /* ================= GRID ================= */
@@ -109,20 +117,73 @@ h1, h2, h3, h4 {
   border-radius: 30px;
   overflow: hidden;
   box-shadow: var(--shadow);
-  transition: 0.4s;
+  transition: all 0.4s ease;
 }
 
 .card:hover {
   transform: translateY(-10px);
 }
 
+/* ================= SCROLLBAR ================= */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f2ebe3;
+}
+
+/* ================= SELECTION ================= */
+::selection {
+  background: var(--gold);
+  color: white;
+}
+
 /* ================= RESPONSIVE ================= */
+@media (max-width: 992px) {
+  .section-title h2 {
+    font-size: 50px;
+  }
+}
+
 @media (max-width: 768px) {
   .section {
     padding: 70px 0;
   }
 
+  .section-title {
+    margin-bottom: 50px;
+  }
+
   .section-title h2 {
     font-size: 42px;
+  }
+
+  .btn {
+    padding: 14px 28px;
+  }
+
+  .container {
+    width: 92%;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title h2 {
+    font-size: 34px;
+  }
+
+  .section-title span {
+    font-size: 12px;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
   }
 }
